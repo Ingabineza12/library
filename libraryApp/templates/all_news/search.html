@@ -3,8 +3,8 @@
 <div class="container">
 
     <div class="row">
-        {% if books%}
-        <h2 style="color: wheat;background-color: rgb(0,0,0,0.5);">Found {{ books|length }} of searched term {{message}}</h2>
+        {% if searched_books%}
+        <h2 style="color: wheat;background-color: rgb(0,0,0,0.5);">Found {{ searched_books|length }} of searched term {{message}}</h2>
         {% else %}
         <h2 style="color: wheat;background-color: rgb(0,0,0,0.5);"> Found 0 books for the search term {{message}}</h2>
         {% endif %}
@@ -13,26 +13,26 @@
 
     <div class="row">
 
-        {% if books %}
+        {% if searched_books %}
+        <div class="container">
+            <div class="row">
         <table class="layout">
       <thead>
         <th>Isbn no.</th>
         <th>Book Name</th>
         <th>Author Name</th>
-        <th>No of books</th>
         <th>Book Details</th>
         <th>Department</th>
         <th>Publisher</th>
         <th>Rack No</th>
       </thead>
 
-      {%for book in books%}
+      {%for book in searched_books%}
 
        <tr>
          <td> {{ book.isbn_no }}</td>
          <td>{{ book.book_name }}</td>
          <td>{{ book.author_name }}</td>
-         <td>{{ book.no_of_books }}</td>
          <td>{{ book.book_detail }}</td>
          <td>{{ book.department }}</td>
          <td>{{ book.publisher }}</td>
@@ -40,6 +40,8 @@
        </tr>
      {% endfor %}
    </table>
+   </div>
+  </div>
 {% endif %}
 </div>
    </div>
