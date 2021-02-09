@@ -1,0 +1,38 @@
+{%extends 'all_news/base.html'%}
+{% load static%}
+{% block content %}
+<div class="container-fluid"
+    style="background:url({{book.image.url}});background-position: center;background-size: cover; background-repeat: no-repeat;height: 90vh;">
+</div>
+
+<div class="jumbotron">
+    <h5 class="text-center" style="font-family: 'Montserrat', sans-serif;">{{book.book_name}}<span><strong>/{{book.author_name}}</strong>;
+    </h5>
+    <table class="layout">
+  <thead>
+    <th>Isbn no.</th>
+    <th>Book Details</th>
+    <th>Department</th>
+    <th>Publisher</th>
+    <th>Rack No</th>
+  </thead>
+
+  {%for book in books%}
+
+   <tr>
+     <td> {{ book.isbn_no }}</td>
+     <td>{{ book.book_detail }}</td>
+     <td>{{ book.department }}</td>
+     <td>{{ book.publisher }}</td>
+     <td>{{ book.rack_no }}</td>
+   </tr>
+ {% endfor %}
+</table>
+
+
+</div>
+
+
+
+
+{% endblock %}
