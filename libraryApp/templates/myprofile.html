@@ -1,0 +1,43 @@
+{% extends 'registration/base.html' %}
+{% load bootstrap3 %}
+{% load static %}
+{% block content %}
+<link rel="preconnect" href="https://fonts.gstatic.com">
+<link href="https://fonts.googleapis.com/css2?family=Nerko+One&display=swap" rel="stylesheet">
+
+
+  <div class="container">
+  <div class="row">
+    <p style="text-align: center; font-size:50px; font-family: 'Nerko One', cursive; color: Teal;"> Profile</p> <br>
+  <div class="col-md-4">
+  <div class="content-section">
+  <div class="media">
+  <img src="{{user.profile.profile_pic.url}}" alt="Profile" class="img_profile "> <br><br><br><br>
+  <div class="media-body">
+  <div class="bodd">
+  <h3 class="account-heading ml-4">{{user.username}}</h3>
+  <button><a href="{% url 'profile_edit' %}" style="color:white;">Edit Profile</a></button>
+</div> <br><br>
+
+  <p class="text-secondary ml-4"><strong>Email: </strong>{{user.email}}</p> <br>
+  <p class="text-secondary ml-4"><strong>Bio: </strong>{{user.profile.bio}}</p>
+  </div>
+</div>
+</div>
+</div>
+</div>
+
+  <style>
+      .img_profile{
+        vertical-align: middle;
+        width: 200px;
+        height: 200px;
+        border-radius:50%;
+      }
+      .bodd,.bod{
+       display: flex;
+       justify-content: space-between;
+      }
+    </style>
+
+  {% endblock %}
