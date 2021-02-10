@@ -1,0 +1,35 @@
+{% extends 'all_news/base.html' %}
+{% load static %}
+<title>{% block title %} View Issue {% endblock %}</title>
+{% block content %}
+
+<div class="container-fluid"
+    style="background:url({{book.image.url}});background-position: center;background-size: cover; background-repeat: no-repeat;height: 90vh;">
+</div>
+
+<div class="jumbotron">
+  <div>
+    <a href="{% url 'new_issue' %}">Issued Book!</a>
+  </div>
+
+  {% if issue %}
+  <table class="layout">
+    <thead>
+      <th>Isbn no.</th>
+      <th>Book Name</th>
+      <th>Borrower Name</th>
+      <th>Issue Date</th>
+    </thead>
+  {% for borrow in issue %}
+    <tr>
+      <td> {{ borrow.isbn }}</td>
+      <td>{{ borrow.book_name }}</td>
+      <td>{{ borrow.borrower_name }}</td>
+      <td>{{ borrow.issue_date }}</td>
+    </tr>
+  {% endfor %}
+  </table>
+  {% else %}
+    <p> There are no issued book. </p>
+  {% endif %}
+{% endblock %}
