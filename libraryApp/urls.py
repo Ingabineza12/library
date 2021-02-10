@@ -9,7 +9,6 @@ urlpatterns=[
     url(r'^all_books/$', views.all_books, name='all_books'),
     url(r'^book/(\d+)',views.book,name ='book'),
     url(r'^book/add/$', views.add_book, name='add_book'),
-    url(r'^delete_book/$', views.ViewDeletePost, name='delete_book'),
     url(r'^edit/profile$',  views.profile_edit,name='profile_edit'),
     url(r'^myprofile/$',  views.myprofile,name='myprofile'),
     url(r'^issue/$', views.view_issue, name='view_issue'),
