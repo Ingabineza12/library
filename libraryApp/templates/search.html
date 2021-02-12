@@ -1,0 +1,78 @@
+{%extends 'base.html'%}
+{% block content %}
+<div class="container">
+
+    <div class="row">
+        {% if searched_books%}
+        <h2 style="color: wheat;background-color: rgb(0,0,0,0.5);">Found {{ searched_books|length }} of searched term {{message}}</h2>
+        {% else %}
+        <h2 style="color: wheat;background-color: rgb(0,0,0,0.5);"> Found 0 books for the search term {{message}}</h2>
+        {% endif %}
+
+    </div>
+
+    <div class="row">
+
+        {% if searched_books %}
+        <div class="container">
+            <div class="row">
+                {%for book in searched_books%}
+
+                <div style="margin-top:20px;" class='col-md-12'>
+                    <div style="width:100%;" class="w3-container card">
+
+                        <div class="w3-card" style="width:100%;">
+                            <header class="w3-container edge">
+                                <h1>{{book.book_name}}</h1>
+                            </header>
+
+                            <div class="w3-container content">
+
+                                <p>Author: {{book.author_name}}</p>
+                                <a href="{%url 'book' book.id %}" style="color:blue; text-decoration:none"><b>View More</b></a>
+                                <img src="{{ book.image.url }}" alt="image" style="width:100%">
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                {% endfor %}
+                {% endif %}
+            </div>
+        </div>
+<!--
+    <div class="row">
+
+        {% if searched_books %}
+        <div class="container">
+            <div class="row">
+        <table class="layout">
+      <thead>
+        <th>Isbn no.</th>
+        <th>Book Name</th>
+        <th>Author Name</th>
+        <th>Book Details</th>
+        <th>Department</th>
+        <th>Publisher</th>
+        <th>Rack No</th>
+      </thead>
+
+      {%for book in searched_books%}
+
+       <tr>
+         <td> {{ book.isbn_no }}</td>
+         <td>{{ book.book_name }}</td>
+         <td>{{ book.author_name }}</td>
+         <td>{{ book.book_detail }}</td>
+         <td>{{ book.department }}</td>
+         <td>{{ book.publisher }}</td>
+         <td>{{ book.rack_no }}</td>
+       </tr>
+     {% endfor %}
+   </table>
+   </div>
+  </div>
+{% endif %}
+</div> -->
+   </div>
+{% endblock %}
