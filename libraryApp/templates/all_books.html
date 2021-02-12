@@ -1,32 +1,46 @@
-{%extends 'all_news/base.html'%}
+{%extends 'base.html'%}
+{% load bootstrap3 %}
 {% load static%}
 {% block content %}
 
 
-<div class="container">
-    <div class="row">
-        <h2 class="center"></h2>
+<link rel="preconnect" href="https://fonts.gstatic.com">
+<link href="https://fonts.googleapis.com/css2?family=Jomhuria&display=swap" rel="stylesheet">
+
+<br> <br>
+    <div class="container" style="background: url('https://images.wallpaperscraft.com/image/book_glasses_coffee_flowers_118088_1280x1280.jpg')">
+
+<p style="text-align: center; font-size:40px; color:yellow;font-family: 'Pangolin', cursive;"> All books</p> <br><br><br>
+      <div class="row">
+
         {% for book in books %}
+        <div class="col-md-4" style="font-size:17px;font-family: 'Pangolin', cursive;">
 
-        <div class="w3-card" style="width:100%; overflow:hidden;">
-          <header class="w3-container w3-light-grey">
-            <hr>
-            <h4>Book name: {{ book.book_name }}</h4>
-            <p class='article-content'>Author: {{ book.author_name }}</p>
-          </header>
+          <div class="w3-card" style="width:100%; overflow:hidden;">
+            <div class="w3-container" style="background-color:wheat">
+              <hr>
+              <h4><strong style="font-family: 'Jomhuria', cursive; font-size:27px;">BOOK NAME:</strong> {{ book.book_name }}</h4> <br>
+              <h4 class='article-content'><strong style="font-family: 'Jomhuria', cursive; font-size:27px;">AUTHOR:</strong> {{ book.author_name }}</h4>
 
-          <div class="w3-container w3-light-grey">
-            <img src="{{ book.image.url }}" alt="image" style="width:100%;">
+              <img src="{{ book.image.url }}" alt="image" style="width:100%; height:350px">
+
+              <br>
+              <a href="{%url 'book' book.id %}" style="text-decoration:none;"><button class="btn btn-outline-success center-block" style="font-size:12px;">View More</button></a>
+              <br>
+
+            </div>
           </div>
-          <footer class="w3-container w3-light-grey">
-            <br>
-            <a href="{%url 'book' book.id %}" style="text-decoration:none;"><button class="btn btn-outline-success center-block"">View More</button></a>
-            <br>
-          </footer>
+          <br><br><br><br>
+
+
         </div>
-        {% endfor %}
+        {%endfor%}
+      </div>
+
     </div>
 
-</div>
 
+{% endblock %}
+{% block scripts %}
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 {% endblock %}

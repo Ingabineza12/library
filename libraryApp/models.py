@@ -13,7 +13,7 @@ class Books(models.Model):
         ('ROM', 'Romantic'),
         ('REL', 'Religious'),
         ('FEM', 'Feminist'),
-        ('COU', 'Courageous'),
+        ('INS', 'Inspiring'),
     )
     isbn_no = models.CharField(max_length=20, blank=True)
     book_id = models.CharField(max_length=20)
@@ -60,35 +60,3 @@ class Profile(models.Model):
 
     def delete_profile(self):
         self.delete()
-
-#borrower table
-class BORROWER(models.Model):
-    Fname = models.CharField(max_length=200)
-    Lname = models.CharField(max_length=200)
-    Address = models.CharField(max_length=200)
-    phone = models.PositiveIntegerField(primary_key=True, validators=[MaxValueValidator(9999999999)])
-    email = models.EmailField(max_length=70,blank=True, null= True, unique= True)
-
-    def __str__(self):
-        return self.Fname+" "+self.Lname
-
-
-class Issue(models.Model):
-    borrower_name = models.CharField(max_length=100)
-    book_name = models.CharField(max_length = 200)
-    book_id = models.CharField(max_length=20)
-    issue_date = models.DateField(default=datetime.date.today)
-    isbn_no = models.CharField(max_length=20, blank=True, null=True)
-
-    def __str__(self):
-        return self.book_name
-
-class Return(models.Model):
-    return_date = models.DateField(default=datetime.date.today)
-    borrower_name = models.CharField(max_length = 100)
-    book_id = models.CharField(max_length=20)
-    book_name= models.CharField(max_length=200)
-    isbn_no = models.CharField(max_length=20)
-
-    def __str__(self):
-        return self.book_name

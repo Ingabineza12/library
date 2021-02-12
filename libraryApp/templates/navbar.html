@@ -1,53 +1,110 @@
-<nav class="navbar navbar-expand-lg navbar-dark fixed-top"
-    style="font-family: 'Ramaraja', serif;  box-shadow: 0 2px 2px -2px rgba(0,0,0,.2);   background-color: rgba(0,0,0,0.5);">
-    <a class="navbar-brand" href="/" style=" font-size:25px;color:rgb(64, 255, 0)"> Library</a>
-    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
-        aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-        <span class="navbar-toggler-icon"></span>
-    </button>
+<!DOCTYPE html>
+<html lang="en">
+<head>
 
-    <div class="collapse navbar-collapse" id="navbarSupportedContent">
-        <ul class="navbar-nav mr-auto ml-4 ">
-            {% if user.is_authenticated%}
-
-            <li class="nav-item active">
-                <a class="nav-link" href="{% url 'home'}">Home <span class="sr-only">(current)</span></a>
-            </li>
-            <li class="nav-item dropdown">
-                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown"
-                    aria-haspopup="true" aria-expanded="false">
-                    {{user.username|title}}
-                </a>
-
-                <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-
-                    <a href="{% url 'myprofile' user.username %}" class="dropdown-item">Profile</a>
-                    <div class="dropdown-divider"></div>
-
-                    <a href="{% url 'logout' %}" class="dropdown-item">Logout</a>
-
-                </div>
-
-            </li>
-
-            <li class="nav-item">
-             <a class="nav-link" href="{% url 'add_book' %}" >Add Book</a>
-           </li>
-            {% else %}
-            <li class="nav-item active">
-                <a class="nav-link" href="{%url 'home'}">Home <span class="sr-only">(current)</span></a>
-            </li>
-
-            <li class="nav-item">
-                <a class="nav-link " href="{% url 'login' %}">Login</a>
-            </li>
-
-            {% endif %}
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- Font Awesome -->
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.2/css/all.css">
+  <!-- Bootstrap core CSS -->
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.3.1/css/bootstrap.min.css" rel="stylesheet">
+  <!-- Material Design Bootstrap -->
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/mdbootstrap/4.8.2/css/mdb.min.css" rel="stylesheet">
+    <!-- Font Awesome -->
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.2/css/all.css">
+  <!-- Bootstrap core CSS -->
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.3.1/css/bootstrap.min.css" rel="stylesheet">
+  <!-- Material Design Bootstrap -->
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/mdbootstrap/4.8.2/css/mdb.min.css" rel="stylesheet">
+  <link rel="preconnect" href="https://fonts.gstatic.com">
+ <link href="https://fonts.googleapis.com/css2?family=Pangolin&display=swap" rel="stylesheet">
+</head>
+<body>
+<!--Navbar-->
+<nav class="navbar navbar-expand-lg" style="color:wheat; background-color:maroon;" >
 
 
-        </ul>
-        <form class="form-inline my-2 my-lg-0" action="{% url 'search_books' %}">
-            <input class="form-control mr-sm-2" type="search" placeholder="Search books" name='search' aria-label="Search">
-        </form>
-    </div>
+  <!-- Navbar brand -->
+  <a class="navbar-brand" href="{% url 'home' %}" style="font-size:30px;color:yellow; padding-right:60px; font-family: 'Pangolin', cursive;">Library</a>
+
+
+
+  <!-- Collapsible content -->
+  {% if user.is_authenticated %}
+
+  <div class="collapse navbar-collapse" id="basicExampleNav">
+
+    <!-- Links -->
+    <ul class="navbar-nav mr-auto">
+      <li class="nav-item active" style="margin-right:30px;">
+        <a class="nav-link" href="{% url 'all_books' %}" style="font-size:20px;color:yellow; padding-right:60px; font-family: 'Pangolin', cursive;"">Home
+          <span class="sr-only">(current)</span>
+        </a>
+      </li>
+      <li class="nav-item" style="margin-right:100px;">
+        <a class="nav-link" href="{% url 'add_book' %}" style="font-size:20px;color:yellow; padding-right:60px; font-family: 'Pangolin', cursive;">Add Book</a>
+      </li>
+
+
+      <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown"
+              aria-haspopup="true" aria-expanded="false" style="font-size:20px; padding-right:60px;color:yellow;font-family: 'Pangolin', cursive;">
+              {{user.username|title}}
+          </a>
+
+          <div class="dropdown-menu" aria-labelledby="navbarDropdown" style="background-color:black;">
+
+              <a href="/myprofile"  class="dropdown-item" style="color:yellow;font-size:15px;font-family: 'Pangolin', cursive;">Profile</a>
+              <div class="dropdown-divider"></div> <br>
+
+              <a href="/logout" class="dropdown-item" style="color:yellow;font-size:15px ;font-family: 'Pangolin', cursive;">Logout</a>
+
+          </div>
+
+      </li>
+
+    </ul>
+
+
+      {% else %}
+
+        <ul class="navbar-nav mr-auto">
+
+        <li class="nav-item active" style="margin-right:30px;">
+        <a class="nav-link" href="{% url 'home' %}" style="font-size:20px;color:yellow; padding-right:60px; font-family: 'Pangolin', cursive;">Home
+          <span class="sr-only">(current)</span>
+        </a>
+        </li>
+
+        <li class="nav-item dropdown">
+              <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown"
+                  aria-haspopup="true" aria-expanded="false" style="font-size:18px; padding-right:60px;color:yellow;font-family: 'Pangolin', cursive;">Register/login
+              </a>
+
+              <div class="dropdown-menu" aria-labelledby="navbarDropdown" style="background-color:black;">
+
+                  <a href="/accounts/register/"  class="dropdown-item" style="color:yellow;font-size:15px;font-family: 'Pangolin', cursive;">Register</a>
+                  <div class="dropdown-divider"></div> <br>
+
+                  <a href="/accounts/login/" class="dropdown-item" style="color:yellow;font-size:15px ;font-family: 'Pangolin', cursive;">Login</a>
+
+              </div>
+          </li>
+      </ul>
+
+      {%endif%}
+
+
+
+      <!-- Adding a search form  -->
+      <form class="col-sm-3 col-md-3 navbar-right" action="{% url 'search_books' %}">
+          <input class="form-control " type="search" placeholder="Search books by category" name='book_name' aria-label="Search"
+          style="border: 0px; border-bottom: 2px solid yellow; outline: none;background-color: black;">
+      </form>
+      <!-- search form end -->
+  <!-- Collapsible content -->
+
 </nav>
+<!--/.Navbar-->
+</body>
+</html>

@@ -1,35 +1,18 @@
-{%extends 'all_news/base.html'%}
+{%extends 'base.html'%}
 {% load bootstrap3 %}
-
 {% block content %}
-<link href="https://fonts.googleapis.com/css2?family=Ramaraja&display=swap" rel="stylesheet">
-<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@900&display=swap" rel="stylesheet">
-<link href="https://fonts.googleapis.com/css2?family=Hind+Siliguri&display=swap" rel="stylesheet">
 
-
-
-<div class="container-fluid banner">
+<link rel="preconnect" href="https://fonts.gstatic.com">
+<link href="https://fonts.googleapis.com/css2?family=Pangolin&display=swap" rel="stylesheet">
+<div class="container-fluid banner" >
 <div class="container justify-content-center" >
-    <h4 class="text-center text-white font-weight-bold" style="font-size: 35px;font-family: 'Montserrat', sans-serif;">Welcome to your <br>Library</h4>
-        <button type="button" class="btn btn-warning btn-md " style="margin-left: 45%;font-family: 'Ramaraja', serif; "> <a href="{% url 'all_books' %}" style="text-decoration: none;color: white;">Get started </a>
+    <h4 class="text-center font-weight-bold" style="font-size:45px;color:yellow; font-family: 'Pangolin', cursive;">Welcome to your <br>Library</h4> <br><br>
+        <button type="button" class="btn btn-warning btn-md " style="margin-left: 40%;font-family: 'Pangolin', cursive; font-size: 25px "> <a href="{% url 'all_books' %}" style="text-decoration: none;color: black;">Get started </a>
   </button>
-
 </div>
 </div>
 <footer>
-    <p class="text-center mt-1">All rights reserved. Deborah Mugiraneza Ingabire @2021</p>
+    <p class="text-center mt-1" style="color:yellow; background-color:rgb(0,0,0,0.6); font-size: 20px;font-family: 'Pangolin', cursive;">All rights reserved. Deborah Mugiraneza Ingabire @2021</p>
 </footer>
 
 {% endblock %}
-
-<style>
-.banner{
-   position: relative;
-   background:url(https://wallpaperaccess.com/full/2862102.jpg);
-   min-height: 96vh;
-   background-size:cover;
-   background-position: center;
-   padding: 250px 0 200px;
-}
-
-</style>

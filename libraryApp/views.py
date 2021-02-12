@@ -9,7 +9,7 @@ from django.contrib.auth import authenticate,login,logout
 
 # Create your views here.
 
-def home(request):
+def index(request):
     return render(request,'home.html')
 
 
@@ -56,74 +56,44 @@ def profile_edit(request):
 
 @login_required(login_url='/login/')
 def add_book(request):
+    # current_user=request.user
     if request.method == 'POST':
-        form = BookForm(request.POST)
+        form = BookForm(request.POST,request.FILES)
         if form.is_valid():
-            form.save(commit=True)
+            form.save()
             return redirect('all_books')
 
     else:
         form = BookForm()
 
-    return render(request, 'add_book.html', {'form': form})
+    return render(request,'registration/add_book.html',{'form':form})
+
+
+
+# @login_required(login_url='/accounts/login/')
+# def all_books(request):
+#     books = Books.objects.order_by('department')
+#     query = request.GET.get('q')
+#     if query:
+#         books = Books.objects.filter(Q(book_name__icontains=query) | Q(author_name__icontains=query) | Q(book_detail__icontains=query) | Q(department__icontains=query))
+#     else:
+#         books = Books.objects.order_by('department')
+#     return render(request, 'all_books.html', {'books': books})
+
 
 @login_required(login_url='/login/')
 def all_books(request):
-    books = Books.objects.order_by('department')
-    query = request.GET.get('q')
-    if query:
-        books = Books.objects.filter(Q(book_name__icontains=query) | Q(author_name__icontains=query) | Q(book_detail__icontains=query) | Q(department__icontains=query))
-    else:
-        books = Books.objects.order_by('department')
-    return render(request, 'all_books.html', {'books': books})
-
-# @login_required(login_url='login')
-# def all_books(request):
-#     books = Books.objects.all()
-#     return render(request,'all_books.html',{'books':books})
+    books = Books.objects.all()
+    return render(request,'all_books.html',{'books':books})
 
 @login_required(login_url='login')
-def book(request,hood_id):
-    current_user = request.user
-    book_name = current_user.profile.hood
-    book = Book.objects.get(id=book_id)
-    return render(request,'book.html',{"book_name":book_name,"author_name":author_name,"book_detail":book_detail})
+def book(request,book_id):
+    books = Books.objects.filter(id=book_id)
+    return render(request,'book.html',{'books':books})
 
-@login_required(login_url='/login/')
-def view_issue(request):
-    issue = Issue.objects.order_by('borrower_name', 'issue_date')
-    return render(request, 'view_issue.html', {'issue': issue})
-
-@login_required(login_url='/login/')
-def new_issue(request):
-    if request.method == 'POST':
-        form = IssueForm(request.POST)
-        if form.is_valid():
-            name = form.cleaned_data['borrower_id']
-            book = form.cleaned_data['isbn_no']
-            form.save(commit=True)
-            books = Books.objects.get(isbn_no=book)
-            Books.Claimbook(books)
-            return redirect('new_issue')
-    else:
-        form = IssueForm()
-    return render(request, 'new_issue.html', {'form': form})
-
-
-@login_required(login_url='/login/')
-def return_book(request):
-    if request.method == 'POST':
-        form = ReturnForm(request.POST)
-        if form.is_valid():
-            form.save(commit=True)
-            book = form.cleaned_data['isbn_no']
-            books = Books.objects.get(isbn_no=book)
-            Books.Addbook(books)
-            Issue.objects.filter(isbn_no=book).delete()
-            return redirect('return_book')
-    else:
-        form = ReturnForm()
-    return render(request, 'return_book.html', {'form': form})
+# def one_art(request,id):
+#     ones_art = Art.objects.filter(id = id)
+#     return render(request,'art.html',{"ones_art":ones_art,})
 
 def search_books(request):
     if 'book' in request.GET and request.GET["book"]:
@@ -135,4 +105,4 @@ def search_books(request):
 
     else:
         message="You haven't searched for any term"
-        return render(request, 'all_news/search.html',{"message":message})
+        return render(request, 'search.html',{"message":message})

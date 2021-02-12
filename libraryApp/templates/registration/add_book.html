@@ -1,4 +1,4 @@
-{% extends "all_news/base.html" %}
+{% extends "base.html" %}
 {% load bootstrap3 %}
 {% load staticfiles %}
 
@@ -8,15 +8,20 @@
   <link rel="stylesheet" href="{% static 'css/news.css' %}"> {% endblock %}
 
   {% block content %}
-    <div class="container">
-        <div class="row">
-  <h3>Add new Book.</h3>
+    <div class="container" style="background-color:wheat;">
+
+  <p style="text-align: center; font-size:40px; font-family: 'Pangolin', cursive;"> Add new book</p> <br><br><br>
+
+<div class="row">
+  <div class="col-md-12" style="font-size:17px;">
   <form  action="{%url 'add_book'%}" method="post" enctype="multipart/form-data">
     {%csrf_token%}
 
     {% bootstrap_form form%}
     <input type="submit" class="btn btn-success btn-lg" value="Submit">
   </form>
+</div>
+</div>
   {% endblock %}
    {% block scripts %}
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>

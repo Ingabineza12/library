@@ -1,13 +1,13 @@
-{%extends "registration/base.html"%}
+{%extends "base.html"%}
 {% load bootstrap3 %}
 {% block content %}
 <br><br>
 <div class="container">
   <br><br>
-  <div class="row">
+  <div class="row" style="font-size:20px; font-family: 'Pangolin', cursive;">
     <!-- Empty div -->
-    <div class="col-md-4"></div>
-    <div class="col-md-4 ">
+    <div class="col-md-3"></div>
+    <div class="col-md-6 ">
       {% if form.errors %}
         <p> Password or Username is incorrect </p>
       {% endif %}
@@ -23,19 +23,21 @@
             {% bootstrap_form form%}
 
             <div class="form-group">
-              <input type="submit" class="btn btn-primary btn-sm" value="Login">
+              <input type="submit" class="btn btn-primary btn-sm" style="font-size:15px" value="Login">
             </div>
             <hr>
 
 
             <input type="hidden" name="next" value="{{next}}">
 
+              <p style="text-align: center; font-size:20px;font-family: 'Pangolin', cursive;">you don't have any account <br><a href="/accounts/register/">Sign up here</a></p>
+
           </form>
 
         </div>
 
       </div>
-      <p style="color: wheat;">you don't have any account <br><a href="/accounts/register/">Sign up here</a></p>
+
 
     </div>
     <!-- empty div -->

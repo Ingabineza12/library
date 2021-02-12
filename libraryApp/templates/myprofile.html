@@ -1,26 +1,26 @@
-{% extends 'registration/base.html' %}
+{% extends 'base.html' %}
 {% load bootstrap3 %}
 {% load static %}
 {% block content %}
-<link rel="preconnect" href="https://fonts.gstatic.com">
-<link href="https://fonts.googleapis.com/css2?family=Nerko+One&display=swap" rel="stylesheet">
 
 
-  <div class="container">
-  <div class="row">
-    <p style="text-align: center; font-size:50px; font-family: 'Nerko One', cursive; color: Teal;"> Profile</p> <br>
-  <div class="col-md-4">
+
+  <div class="container" style="background-color:wheat;"><br><br>
+    <p style="text-align: center; font-size:40px; font-family: 'Pangolin', cursive;"> Profile</p> <br><br><br>
+
+    <div class="row" >
+  <div class="col-md-8">
   <div class="content-section">
   <div class="media">
-  <img src="{{user.profile.profile_pic.url}}" alt="Profile" class="img_profile "> <br><br><br><br>
+  <img src="{{user.profile.image.url}}" alt="Profile" class="img_profile "> <br><br><br><br>
   <div class="media-body">
   <div class="bodd">
-  <h3 class="account-heading ml-4">{{user.username}}</h3>
-  <button><a href="{% url 'profile_edit' %}" style="color:white;">Edit Profile</a></button>
+  <h3 class="account-heading ml-4" style="font-size:20px;font-family: 'Pangolin', cursive;">{{user.username}}</h3>
+  <button style="background-color:black; font-size:15px;"><a href="{% url 'profile_edit' %}" style="color:yellow; text-decoration:none;">Edit Profile</a></button>
 </div> <br><br>
 
-  <p class="text-secondary ml-4"><strong>Email: </strong>{{user.email}}</p> <br>
-  <p class="text-secondary ml-4"><strong>Bio: </strong>{{user.profile.bio}}</p>
+  <p style="color: black;font-size:20px;font-family: 'Pangolin', cursive;">Email:  {{user.email}}</p> <br>
+  <p style="color: black;font-size:20px;font-family: 'Pangolin', cursive;">Bio: {{user.profile.bio}}</p> <br><br><br><br><br><br><br><br>
   </div>
 </div>
 </div>

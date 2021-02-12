@@ -11,9 +11,6 @@ urlpatterns=[
     url(r'^book/add/$', views.add_book, name='add_book'),
     url(r'^edit/profile$',  views.profile_edit,name='profile_edit'),
     url(r'^myprofile/$',  views.myprofile,name='myprofile'),
-    url(r'^issue/$', views.view_issue, name='view_issue'),
-    url(r'^issue/new/$', views.new_issue, name='new_issue'),
-    url(r'^return_book/$', views.return_book, name='return_book'),
     url(r'^search/$',  views.search_books,name='search_books'),
 
 ]
