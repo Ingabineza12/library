@@ -7,8 +7,15 @@
 <div class="container-fluid banner" >
 <div class="container justify-content-center" >
     <h4 class="text-center font-weight-bold" style="font-size:45px;color:yellow; font-family: 'Pangolin', cursive;">Welcome to your <br>Library</h4> <br><br>
+
+    {% if user.is_authenticated %}
         <button type="button" class="btn btn-warning btn-md " style="margin-left: 40%;font-family: 'Pangolin', cursive; font-size: 25px "> <a href="{% url 'all_books' %}" style="text-decoration: none;color: black;">Get started </a>
-  </button>
+       </button>
+
+  {%else%}
+      <button type="button" class="btn btn-warning btn-md " style="margin-left: 40%;font-family: 'Pangolin', cursive; font-size: 25px "> <a href="/accounts/login/" style="text-decoration: none;color: black;">Get started </a>
+    </button>
+  {% endif%}
 </div>
 </div>
 <footer>

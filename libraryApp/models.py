@@ -40,12 +40,10 @@ class Books(models.Model):
         self.delete()
 
     @classmethod
-    def search_by_name(cls,search_term):
-        book=cls.objects.filter(name__icontains=search_term)
+    def search_by_department(cls,search_term):
+        book=cls.objects.filter(department__icontains=search_term)
         return book
-
-    def __str__(self):
-        return self.book_name
+    
 
 class Profile(models.Model):
     image=models.ImageField(default='default.jpg', upload_to='profile_pics')

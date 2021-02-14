@@ -96,12 +96,12 @@ def book(request,book_id):
 #     return render(request,'art.html',{"ones_art":ones_art,})
 
 def search_books(request):
-    if 'book' in request.GET and request.GET["book"]:
-        search_term=request.GET.get("book")
-        searched_books=Book.search_by_name(search_term)
+    if 'department' in request.GET and request.GET["department"]:
+        search_term=request.GET.get("department")
+        searched_books=Books.search_by_department(search_term)
         message=f"{search_term}"
 
-        return render(request,'all_news/search.html',{"message":message,"searched_books":searched_books})
+        return render(request,'search.html',{"message":message,"searched_books":searched_books})
 
     else:
         message="You haven't searched for any term"

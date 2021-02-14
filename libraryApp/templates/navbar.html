@@ -42,7 +42,7 @@
         </a>
       </li>
       <li class="nav-item" style="margin-right:100px;">
-        <a class="nav-link" href="{% url 'add_book' %}" style="font-size:20px;color:yellow; padding-right:60px; font-family: 'Pangolin', cursive;">Add Book</a>
+        <a class="nav-link" href="/admin" style="font-size:20px;color:yellow; padding-right:60px; font-family: 'Pangolin', cursive;">Admin</a>
       </li>
 
 
@@ -71,7 +71,7 @@
         <ul class="navbar-nav mr-auto">
 
         <li class="nav-item active" style="margin-right:30px;">
-        <a class="nav-link" href="{% url 'home' %}" style="font-size:20px;color:yellow; padding-right:60px; font-family: 'Pangolin', cursive;">Home
+        <a class="nav-link" href="/accounts/login/" style="font-size:20px;color:yellow; padding-right:60px; font-family: 'Pangolin', cursive;">Home
           <span class="sr-only">(current)</span>
         </a>
         </li>
@@ -96,11 +96,15 @@
 
 
 
-      <!-- Adding a search form  -->
-      <form class="col-sm-3 col-md-3 navbar-right" action="{% url 'search_books' %}">
-          <input class="form-control " type="search" placeholder="Search books by category" name='book_name' aria-label="Search"
-          style="border: 0px; border-bottom: 2px solid yellow; outline: none;background-color: black;">
-      </form>
+<div class="col-sm-3 col-md-3 navbar-right">
+  <form class="navbar-form" role="search" action="{% url 'search_books' %}">
+
+    <div class="input-group">
+      <input type="text" class="form-control" placeholder="Search books department" name="department" style="border: 0px; border-bottom: 2px solid yellow; outline: none;background-color: black;"">
+    </div>
+
+  </form>
+</div>
       <!-- search form end -->
   <!-- Collapsible content -->
 
